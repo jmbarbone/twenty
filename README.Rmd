@@ -1,0 +1,60 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# twenty
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of twenty is to provide functions for working with _scores_.
+These include some simple
+
+## Installation
+
+You can install the development version of twenty like so:
+
+``` r
+remotes::install_github("jmbarbone/twenty")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(twenty)
+
+x <- c(
+  1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 6L,
+  6L, 3L, 1L, 2L, 7L, 7L, 35L, 6L, 6L, 9L
+)
+
+range <- c(0, 40)
+bounds <- c(0, 100)
+anchors <- c(0, 4, 16, 32, 40)
+
+normalize(x)
+normalize(x, range)
+normalize(x, range, bounds)
+
+score_reverse(x)
+score_reverse(x, range)
+
+anchorize(x, anchors)
+anchorize(x, anchors, reverse = TRUE)
+
+percentile_rank(x)
+percentile_rank(1:5, weights = c(10, 5, 0, 2, 3))
+```
