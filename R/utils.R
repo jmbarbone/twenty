@@ -23,3 +23,26 @@ diff.twenty_range <- function(x, lag = 1, differences = 1, ...) {
 
   x[2L] - x[1L]
 }
+
+check_lengths <- function(x, y) {
+  dx <- deparse1(substitute(x))
+  dy <- deparse1(substitute(y))
+  nx <- length(x)
+  ny <- length(y)
+
+  ok <- (nx > 0 & ny > 0) & (nx == ny | nx == 1L | ny == 1L)
+
+  if (!ok) {
+    msg <- sprintf(
+      "%s [n = %i] and %s [n = %i] are not compaitable lengths",
+      dx,
+      nx,
+      dy,
+      ny
+    )
+
+    stop(msg, call. = FALSE)
+  }
+
+  invisible()
+}
