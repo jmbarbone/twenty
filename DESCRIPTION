@@ -16,4 +16,4 @@ Imports:
     mark
 Remotes:
     github::jmbarbone/facts,
-    github::jmbarbone/mark
+    github::jmbarbone/mark@91-facts
