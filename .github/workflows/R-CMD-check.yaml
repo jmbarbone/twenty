@@ -30,9 +30,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      with:
-        repository: jmbarbone/facts
-        token: ${{ secrets.PAT_TWENTY_FACTS }}
+        with:
+          repository: jmbarbone/facts
+          token: ${{ secrets.PAT_TWENTY_FACTS }}
 
       - uses: r-lib/actions/setup-pandoc@v2
 
