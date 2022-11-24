@@ -51,7 +51,7 @@ percentile_rank <- function(x, weights = NULL) {
 
   id <- facts::pseudo_id(x)
   tab <- tabulate(id)
-  names(tab) <- fuj::values(id)
+  names(tab) <- attr(id, "values")
   key <- attr(id, "values", exact = TRUE)
   res <- fuj::set_names(do_percentile_rank(key, tab), NULL)
   fuj::set_names(res[match(x, key)], x)
@@ -59,7 +59,7 @@ percentile_rank <- function(x, weights = NULL) {
 
 do_percentile_rank <- function(u, w) {
   # mark:::dupe_check(u)
-  stopifnot(!anyDuplicated(u) == 0)
+  stopifnot(anyDuplicated(u) == 0)
   w <- as.integer(w)
   if (length(w) == 1L) {
     if (is.na(w)) {
