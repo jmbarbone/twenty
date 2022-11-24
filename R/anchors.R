@@ -55,5 +55,5 @@ counts.twenty_anchorized <- function(x) {
   n <- length(anchors)
   x <- match(x, anchors)
   x[is.na(x)] <- n
-  mark::set_names0(tabulate(x, n), anchors)
+  fuj::set_names(tabulate(x, n), anchors)
 }
