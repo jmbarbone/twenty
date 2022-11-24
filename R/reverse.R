@@ -47,7 +47,7 @@ score_reverse.data.frame <- function(x, range = NULL, cols = NULL, ...) {
     range <- list(range)
   }
 
-  if (!(length(range) == 1L) || length(range) == length(cols)) {
+  if (!(length(range) == 1L || length(range) == length(cols))) {
     stop("x and range are not compatable lengths", call. = FALSE)
   }
 

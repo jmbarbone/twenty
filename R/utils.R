@@ -1,7 +1,7 @@
 `%||%` <- function(x, y) { if (is.null(x)) y else x }
 
 get_range <- function(x) {
-  x <- as.integer(x)
+  x <- as.double(x)
   x <- x[!is.na(x)]
 
   if (!length(x)) {
