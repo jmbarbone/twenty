@@ -84,7 +84,7 @@ normalize.data.frame <- function(x, range = NULL, bounds = 0:1, ...) {
     bounds <- list(bounds)
   }
 
-  if (!(length(range) == 1L) || length(bounds) == 1L || length(range) == length(bounds)) {
+  if (!(length(range) == 1L || length(bounds) == 1L || length(range) == length(bounds))) {
     stop("range and bounds are not compatable lengths", call. = FALSE)
   }
 

@@ -3,7 +3,7 @@
 #' @param x A vector of `numeric` values
 #' @param range A range of potential values
 #' @examples
-#' x <- (2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
+#' x <- c(2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
 #' score_reverse(x)
 #' score_reverse(x, 0:5)
 #'
@@ -47,7 +47,7 @@ score_reverse.data.frame <- function(x, range = NULL, cols = NULL, ...) {
     range <- list(range)
   }
 
-  if (!(length(range) == 1L) || length(range) == length(cols)) {
+  if (!(length(range) == 1L || length(range) == length(cols))) {
     stop("x and range are not compatable lengths", call. = FALSE)
   }
 

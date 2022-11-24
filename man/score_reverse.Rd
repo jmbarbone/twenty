@@ -23,7 +23,7 @@ score_reverse(x, range = NULL, ...)
 Reverse a score
 }
 \examples{
-x <- (2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
+x <- c(2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
 score_reverse(x)
 score_reverse(x, 0:5)
 
