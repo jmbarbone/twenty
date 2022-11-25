@@ -49,10 +49,6 @@ percentile_rank(0:9)
 x <- c(1, 2, 1, 7, 5, NA_integer_, 7, 10)
 percentile_rank(x)
 
-if (mark::package_available("dplyr")) {
-  dplyr::percent_rank(x)
-}
-
 # with weights
 percentile_rank(7:1, c(1, 0, 2, 2, 3, 1, 1))
 }
