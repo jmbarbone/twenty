@@ -58,8 +58,19 @@ percentile_rank <- function(x, weights = NULL) {
 }
 
 do_percentile_rank <- function(u, w) {
-  # mark:::dupe_check(u)
-  stopifnot(anyDuplicated(u) == 0)
+  if (isTRUE(as.logical(anyDuplicated(u)))) {
+    # safe for vctrs where anyDuplicated.vctrs returns logical:
+    #
+    # ``` r
+    # anyDuplicated(vctrs::new_vctr(1))
+    # #> [1] FALSE
+    # ```
+    #
+    # https://github.com/r-lib/vctrs/issues/1452
+
+    stop("weights cannot contain any duplicated values", call. = FALSE)
+  }
+
   w <- as.integer(w)
   if (length(w) == 1L) {
     if (is.na(w)) {
