@@ -1,4 +1,3 @@
-#' @importFrom generics as.factor
 #' @keywords internal
 "_PACKAGE"
 

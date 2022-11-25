@@ -17,6 +17,8 @@ score_reverse(x, range = NULL, ...)
 
 \item{range}{A range of potential values}
 
+\item{...}{Additional arguments passed to methods}
+
 \item{cols}{An optional selection for columns}
 }
 \description{

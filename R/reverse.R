@@ -2,6 +2,7 @@
 #'
 #' @param x A vector of `numeric` values
 #' @param range A range of potential values
+#' @param ... Additional arguments passed to methods
 #' @examples
 #' x <- c(2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
 #' score_reverse(x)
