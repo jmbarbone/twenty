@@ -13,7 +13,7 @@ get_range <- function(x) {
     stop("Not enough finite values in range", call. = FALSE)
   }
 
-  mark::struct(c(min(x), max(x)), class = "twenty_range")
+  fuj::struct(c(min(x), max(x)), class = "twenty_range")
 }
 
 diff.twenty_range <- function(x, lag = 1, differences = 1, ...) {

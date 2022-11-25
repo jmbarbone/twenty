@@ -11,12 +11,12 @@ Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.2
 Imports: 
+    fuj (>= 0.0.2),
     facts,
-    generics (>= 0.1.0),
-    mark (>= 0.5.3.9000)
+    generics (>= 0.1.0)
 Remotes:
     github::jmbarbone/facts,
-    github::jmbarbone/mark@91-facts
+    github::jmbarbone/fuj
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

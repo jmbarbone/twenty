@@ -46,14 +46,27 @@ percentile_rank <- function(x, weights = NULL) {
   }
 
   id <- facts::pseudo_id(x)
-  tab <- mark::counts(id)
+  tab <- tabulate(id)
+  names(tab) <- attr(id, "values")
   key <- attr(id, "values", exact = TRUE)
-  res <- mark::set_names0(do_percentile_rank(key, tab), NULL)
-  mark::set_names0(res[match(x, key)], x)
+  res <- fuj::set_names(do_percentile_rank(key, tab), NULL)
+  fuj::set_names(res[match(x, key)], x)
 }
 
 do_percentile_rank <- function(u, w) {
-  mark:::dupe_check(u)
+  if (isTRUE(as.logical(anyDuplicated(u)))) {
+    # safe for vctrs where anyDuplicated.vctrs returns logical:
+    #
+    # ``` r
+    # anyDuplicated(vctrs::new_vctr(1))
+    # #> [1] FALSE
+    # ```
+    #
+    # https://github.com/r-lib/vctrs/issues/1452
+
+    stop("weights cannot contain any duplicated values", call. = FALSE)
+  }
+
   w <- as.integer(w)
   if (length(w) == 1L) {
     if (is.na(w)) {
