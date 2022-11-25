@@ -31,26 +31,24 @@ anchorize <- function(x, anchors = NULL, reverse = FALSE) {
 # S3 methods --------------------------------------------------------------
 
 #' @export
-#' @rdname anchorize
 print.twenty_anchorized <- function(x, ...) {
-  print(as.factor(x), ...)
+  print(generics::as.factor(x), ...)
   invisible(x)
 }
 
-#' @export
-#' @rdname anchorize
-as.factor.twenty_anchorized <- function(x) {
+#' @exportS3Method generics::as.factor
+as.factor.twenty_anchorized <- function(x, ...) {
   factor(x, levels = attr(x, "anchors", exact = TRUE))
 }
 
-#' @rdname anchorize
-fact.twenty_anchorized <- function(x) {
+#' @exportS3Method facts::fact
+fact.twenty_anchorized <- function(x, ...) {
   a <- attr(x, "anchors", exact = TRUE)
-  facts:::new_fact(match(x, a), a)
+  facts::new_fact(match(x, a), a)
 }
 
-#' @rdname anchorize
-counts.twenty_anchorized <- function(x) {
+#' @exportS3Method mark::counts
+counts.twenty_anchorized <- function(x, ...) {
   anchors <- attr(x, "anchors", exact = TRUE)
   n <- length(anchors)
   x <- match(x, anchors)
