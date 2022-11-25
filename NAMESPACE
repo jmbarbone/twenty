@@ -14,8 +14,4 @@ export(anchorize)
 export(normalize)
 export(percentile_rank)
 export(score_reverse)
-<<<<<<< HEAD
 export(score_scale)
-importFrom(generics,as.factor)
-=======
->>>>>>> main
