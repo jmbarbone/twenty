@@ -12,8 +12,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.2
 Imports: 
     facts,
-    generics,
-    mark
+    generics (>= 0.1.0),
+    mark (>= 0.5.3.9000)
 Remotes:
     github::jmbarbone/facts,
     github::jmbarbone/mark@91-facts
