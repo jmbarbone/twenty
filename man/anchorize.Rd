@@ -2,21 +2,9 @@
 % Please edit documentation in R/anchors.R
 \name{anchorize}
 \alias{anchorize}
-\alias{print.twenty_anchorized}
-\alias{as.factor.twenty_anchorized}
-\alias{fact.twenty_anchorized}
-\alias{counts.twenty_anchorized}
 \title{Anchors}
 \usage{
 anchorize(x, anchors = NULL, reverse = FALSE)
-
-\method{print}{twenty_anchorized}(x, ...)
-
-\method{as.factor}{twenty_anchorized}(x)
-
-fact.twenty_anchorized(x)
-
-counts.twenty_anchorized(x)
 }
 \arguments{
 \item{x}{A vector of values}

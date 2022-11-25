@@ -9,14 +9,14 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Imports: 
+    fuj (>= 0.0.2),
     facts,
-    generics,
-    mark
+    generics (>= 0.1.0)
 Remotes:
     github::jmbarbone/facts,
-    github::jmbarbone/mark
+    github::jmbarbone/fuj
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

@@ -17,13 +17,15 @@ score_reverse(x, range = NULL, ...)
 
 \item{range}{A range of potential values}
 
+\item{...}{Additional arguments passed to methods}
+
 \item{cols}{An optional selection for columns}
 }
 \description{
 Reverse a score
 }
 \examples{
-x <- (2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
+x <- c(2L, 4L, 5L, 2L, 4L, 3L, 5L, 5L, 2L, 5L)
 score_reverse(x)
 score_reverse(x, 0:5)
 

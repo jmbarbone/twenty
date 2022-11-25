@@ -1,7 +1,7 @@
 `%||%` <- function(x, y) { if (is.null(x)) y else x }
 
 get_range <- function(x) {
-  x <- as.integer(x)
+  x <- as.double(x)
   x <- x[!is.na(x)]
 
   if (!length(x)) {
@@ -13,7 +13,7 @@ get_range <- function(x) {
     stop("Not enough finite values in range", call. = FALSE)
   }
 
-  mark::struct(c(min(x), max(x)), class = "twenty_range")
+  fuj::struct(c(min(x), max(x)), class = "twenty_range")
 }
 
 diff.twenty_range <- function(x, lag = 1, differences = 1, ...) {
