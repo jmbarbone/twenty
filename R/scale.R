@@ -6,6 +6,13 @@
 #' @param center A center
 #' @param scale A scale
 #' @return A vector of scales scores
+#' @examples
+#' score_scale(1:10)
+#' score_scale(1:10, center = 3, scale = 1)
+#'
+#' x <- matrix(1:15, ncol = 3)
+#' score_scale(x)
+#' score_scale(as.data.frame(x))
 #' @export
 score_scale <- function(x, center = mean, scale = stats::sd) {
   UseMethod("score_scale")
