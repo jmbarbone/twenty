@@ -44,7 +44,7 @@ as.factor.twenty_anchorized <- function(x, ...) {
 #' @exportS3Method facts::fact
 fact.twenty_anchorized <- function(x, ...) {
   a <- attr(x, "anchors", exact = TRUE)
-  facts:::new_fact(match(x, a), a)
+  facts::new_fact(match(x, a), a)
 }
 
 #' @exportS3Method mark::counts
