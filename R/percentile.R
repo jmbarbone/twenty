@@ -47,24 +47,18 @@ percentile_rank <- function(x, weights = NULL) {
 
   id <- facts::pseudo_id(x)
   tab <- tabulate(id)
-  names(tab) <- attr(id, "values")
-  key <- attr(id, "values", exact = TRUE)
-  res <- fuj::set_names(do_percentile_rank(key, tab), NULL)
-  fuj::set_names(res[match(x, key)], x)
+  res <- do_percentile_rank(attr(id, "values"), tab)
+  fuj::struct(
+    res[id],
+    class = class(res),
+    names = names(res)[id],
+    values = attr(res, "values")[id]
+  )
 }
 
 do_percentile_rank <- function(u, w) {
-  if (isTRUE(as.logical(anyDuplicated(u)))) {
-    # safe for vctrs where anyDuplicated.vctrs returns logical:
-    #
-    # ``` r
-    # anyDuplicated(vctrs::new_vctr(1))
-    # #> [1] FALSE
-    # ```
-    #
-    # https://github.com/r-lib/vctrs/issues/1452
-
-    stop("weights cannot contain any duplicated values", call. = FALSE)
+  if (any_duplicated(u)) {
+    stop(cond_percentile_rank_dupe(u))
   }
 
   w <- as.integer(w)
@@ -81,7 +75,7 @@ do_percentile_rank <- function(u, w) {
     res <- (cumsum(p) - 0.5) / n
   } else {
     if (length(w) != length(u)) {
-      stop("length(weights) must be 1L or equal to length(x)", call. = FALSE)
+      stop(cond_percentile_rank_length())
     }
 
     ok <- stats::complete.cases(u, w)
@@ -91,7 +85,44 @@ do_percentile_rank <- function(u, w) {
   }
 
   out <- rep(NA_real_, length(ok))
-  names(out) <- u
   out[ok] <- res
-  out
+  fuj::struct(
+    x = out,
+    class = c("percentile_rank", "numeric"),
+    names = as.character(u),
+    values = u
+  )
+}
+
+new_percentile_rank <- function(x, values) {
+  fuj::struct(
+    x,
+    class = c("percentile_rank", "numeric"),
+    names = as.character(values),
+    values = values
+  )
+}
+
+#' @export
+print.percentile_rank <- function(x, ...) {
+  out <- x
+  out <- as.double(x)
+  names(out) <- names(x)
+  print(out)
+  invisible(x)
+}
+
+cond_percentile_rank_dupe <- function(x) {
+  w <- which(duplicated(x))
+  fuj::new_condition(
+    msg = sprintf("`x` has duplicate values at: [%s]", toString(w)),
+    class = "percentile_rank_duplicated"
+  )
+}
+
+cond_percentile_rank_length <- function(x) {
+  fuj::new_condition(
+    msg = "length(weights) must be 1L or equal to length(x)",
+    class = "percentile_rank_lengths"
+  )
 }
