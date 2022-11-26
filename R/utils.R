@@ -46,3 +46,15 @@ check_lengths <- function(x, y) {
 
   invisible()
 }
+
+any_duplicated <- function(x) {
+  # safe for vctrs where anyDuplicated.vctrs returns logical:
+  #
+  # ``` r
+  # anyDuplicated(vctrs::new_vctr(1))
+  # #> [1] FALSE
+  # ```
+  #
+  # https://github.com/r-lib/vctrs/issues/1452
+  isTRUE(as.logical(anyDuplicated(unclass(x))))
+}
