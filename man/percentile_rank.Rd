@@ -2,9 +2,15 @@
 % Please edit documentation in R/percentile.R
 \name{percentile_rank}
 \alias{percentile_rank}
+\alias{percentile_rank.default}
+\alias{percentile_rank.table}
 \title{Percentile rank}
 \usage{
-percentile_rank(x, weights = NULL)
+percentile_rank(x, ...)
+
+\method{percentile_rank}{default}(x, weights = NULL)
+
+\method{percentile_rank}{table}(x)
 }
 \arguments{
 \item{x}{A vector of values to rank}
