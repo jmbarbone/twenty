@@ -16,7 +16,7 @@ Imports:
     generics (>= 0.1.0)
 Remotes:
     github::jmbarbone/facts,
-    github::jmbarbone/fuj@12-package-name
+    github::jmbarbone/fuj
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
