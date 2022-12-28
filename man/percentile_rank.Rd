@@ -15,6 +15,8 @@ percentile_rank(x, ...)
 \arguments{
 \item{x}{A vector of values to rank}
 
+\item{...}{Additional parameters sent to methods}
+
 \item{weights}{A vector of the number of times to repeat \code{x}}
 }
 \value{
