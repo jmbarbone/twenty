@@ -28,7 +28,7 @@
 #' `1`, as these values are not actually within the set.
 #'
 #' @param x A vector of values to rank
-#' @param weights A vector of the number of times to repeat `x`
+#' @param ... Additional parameters sent to methods
 #'
 #' @return The percentile rank of `x` between 0 and 1 (see Boundaries)
 #'
@@ -40,7 +40,14 @@
 #' # with weights
 #' percentile_rank(7:1, c(1, 0, 2, 2, 3, 1, 1))
 #' @export
-percentile_rank <- function(x, weights = NULL) {
+percentile_rank <- function(x, ...) {
+  UseMethod("percentile_rank")
+}
+
+#' @export
+#' @rdname percentile_rank
+#' @param weights A vector of the number of times to repeat `x`
+percentile_rank.default <- function(x, weights = NULL, ...) {
   if (!is.null(weights)) {
     return(do_percentile_rank(x, weights))
   }
@@ -55,6 +62,17 @@ percentile_rank <- function(x, weights = NULL) {
     values = attr(res, "values")[id]
   )
 }
+
+#' @export
+#' @rdname percentile_rank
+percentile_rank.table <- function(x, ...) {
+  w <- as.integer(x)
+  x <- as.numeric(names(x))
+  # TODO include fills for 0
+  percentile_rank(x, w)
+}
+
+# helpers -----------------------------------------------------------------
 
 do_percentile_rank <- function(u, w) {
   if (any_duplicated(u)) {
