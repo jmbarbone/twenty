@@ -8,9 +8,9 @@
 \usage{
 percentile_rank(x, ...)
 
-\method{percentile_rank}{default}(x, weights = NULL)
+\method{percentile_rank}{default}(x, weights = NULL, ...)
 
-\method{percentile_rank}{table}(x)
+\method{percentile_rank}{table}(x, ...)
 }
 \arguments{
 \item{x}{A vector of values to rank}
